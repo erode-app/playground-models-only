@@ -41,4 +41,6 @@ model {
     technology 'TypeScript'
     link https://github.com/erode-app/playground
   }
+
+  product_service -> user_service 'Fetches creator information to enrich product data for /products/:id/creator endpoint.'
 }

@@ -35,10 +35,19 @@ model {
     -[database]-> database
   }
 
+  order_service = service 'Order Service' {
+    #backend #microservice
+    description 'Handles order processing and interacts with the Product Service to manage order-related data.'
+    technology 'TypeScript'
+  }
+
   database = database 'Database' {
     #storage
     description 'In-memory data store'
     technology 'TypeScript'
     link https://github.com/erode-app/playground
   }
+
+  product_service -[https]-> user_service 'Product service fetches creator (user) info for enrichment'
+  order_service -[https]-> product_service 'Order service retrieves product data as part of order operations'
 }
